@@ -1,4 +1,18 @@
+<<<<<<< HEAD
 hi this bharath
 this my second line
 this my 3rd line
 this my 4th line
+=======
+ihi this bharath
+this my second 
+sgdkh llsjhdiuh ajsiuhs
+hxvhsahs
+shwushja
+.kjaxusn
+sjsjsnxksxnksjx
+/skx,sjsjn.kxnsjxnxsjn
+this my 3rd ld3ae02f3751ede2d985b333d70f5906cc602c7ec
+
+hot fix9551a92efdd0471d28499a545314fa60890fb5db
+>>>>>>> 712820cbb076414e06084454c4dc043043311157
