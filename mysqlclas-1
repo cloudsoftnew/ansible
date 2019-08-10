@@ -1,0 +1,407 @@
+
+===========MySql DATABASE=================
+
+
+DDL-  Data definition language(creation of table and database)
+
+DML-  Data manipulation language(delete,insert and update)
+
+DRL-  Data retrieval language(selecting)
+
+DCL-  Data control language (creating users and granting permisions)
+
+TCL-  Transaction control language(commit)
+
+CRUD-  create, retrieve, update and delete.
+
+1.MySql is a open source Database server
+
+2. MySql is developed on top of c and cpp languages.
+
+3. MySql follows  RDBMS(Relational Database Management System) rules
+
+4.MySql server runs on top of ANSII standard SQL
+
+5. MySql is platform independant.
+
+6. MySql supports all popular programming languages(c,cpp,java,PHP and scripting languages)
+
+7. MySql server can be communicated through various interfaces
+	a. command line interface(CLI)
+	b. GUI softwares(SQLYOG,HEIDI SQL, MySql Admin)
+	c. webbased tools(PHP Myadmin, SQL puddy).
+
+-------------------------------------------------------------------------------------
+
+
+SQL(structural Query Language) is used for communicating with the Databse server.
+SQL can be used for performing various Databse related actions like
+
+1.DDL:-For creating Database and table
+
+For altering table (change,add,drop,rename)
+For droping databse and tables.
+
+2.DML:-
+	a. insert  into
+	b. update  set
+	c. delete from
+
+3. DRL:-
+	select from <table_name>
+	a. where<condition>
+		i. use OR, AND, BETWEEN, LIKE(_,%), in, not in
+	b. order by
+	c. group by
+	d. limit
+
+4. TCL:-
+	a. commit
+	b.rollback
+
+5. DCL:-
+	a. grant
+	b. create user
+
+
+
+*  MySql Database server can contain collection of Databases.
+
+*  Databse is a collection of tables(entities)
+
+*  Table contains collection of records(tuples or rows)
+
+*  Each record contains collection of fields(columns).
+
+*  Each field of a table is predefined with a datatype and
+pre allocated with some size.
+
+MySQL Datatypes:-
+
+i).	 Numeric datatype.
+
+ii).	String datatype
+
+iii).	Binary datatype
+
+iv).	Date datatype
+
+v).	Special datatype
+
+
+i).Numeric datatype:-
+	a). tiny int(1 byte):-	
+	For unsigned 0 to pow(2,8)-1 [0 to 255]
+	For signed -pow(2,8-1) to pow(2,8-1)-1 [-128 to 127]
+
+	b). small int(2 bytes):- 
+	For unsigned 0- to pow(2,16)-1 
+	For signed -pow(2,16-1) to pow(2,16-1)-1 
+
+	c). medeium int(3 bytes):- 
+	For unsigned 0 to pow(2,24)-1 
+	For signed -pow(2,24-1) to pow(2,24-1)-1 
+
+	d).int(4 bytes):- 
+	For unsigned 0 to pow(2,32)-1 
+	For signed -pow(2,32-1) to pow(2,32-1)-1 
+
+	e).bigint(8 bytes):-
+	For unsigned 0 to pow(2,64)-1 
+	For signed -pow(2,64-1) to pow(2,64-1)-1 
+
+Note:-  Size will specify the no. of fields allowed for the  field
+
+	Ex:- int(5)  means maximum is 99999
+
+	f). float(size,precision):-
+		maximum is pow(10,38)
+
+	g). double:- maximum is pow(10,306)
+
+ii).	String datatype:-
+
+	a).char:- Fixed length string datatype.(0 to 255). Here size is a manadatory
+
+	b). varchar:- It is variable length character data
+	0 to 255(before 5.x)
+	0 to 65535(from 5.x)
+
+	c). medium text:- Here size can  be specified from  0 to pow(2,24)-1
+
+	d). text:-size is 0 to pow(2,32)-1 (approximately 4GB)
+
+	e). long text:- 0 to pow(2,64)-1
+
+iii).	Binary datatype:-
+
+	a). binary:-It is similar to char data type for storing binary information 
+
+	b). varbinary:-It is similar to varchar
+
+	c). blob(Binary large object):-It is similar to text datatype
+
+	d). long blob
+
+iv).	Date datatype:-
+	
+	a). date
+	b). time
+	c). datetime
+	d). timestamp
+
+	date, string and binary information  must be enclosed in  quotations while inserting in to database
+
+v).	Special datatype:-
+
+	a). enum(<val1>,<val2>,...<val65535>):-Any one value is accepted in the list while insertion. 
+
+	b). set(<val1>,<val2>,...<val255>):-One or more values will be added to the database.
+
+mysql>select now();
+
+mysql>select user();
+
+mysql>show databases;
+
+mysql>select curdate();
+
+mysql>select curtime();
+
+mysql>set @x=23;
+
+mysql>select @x;
+
+mysql>select 2*3;
+
+mysql>select ucase("lamp");
+
+mysql>select substr("lampInstitute",2);
+
+mysql>select substr("lampInstitute",2,4);
+
+mysql>select concat("abc",@x,"pqr");
+
+mysql>select pow(2,15);
+
+mysql>select md5("lamp");  //member digest 5
+
+			
+========DATABASE LEVEL QUERIES=======
+
+	It is a case insensitive
+
+mysql>show databases;
+prints the list of databases
+
+
+mysql>use <databbase-name>
+selects the database as current working database
+
+
+mysql>select database();
+shows the current database
+
+
+mysql>create database <database-name>
+It creates a new database with database server if it does not exists.
+
+
+mysql>drop database <database-name>
+It will delete the entire data of that particular database.
+
+=========TABLE LEVEL QUERIES========
+
+Additional constraints:-
+
+NULL:- When field is inserted with no data NULL will be inserted
+
+NOT NULL:-It will store the valueless data of the data when  field is inserted with no data
+
+default <value>:- When no value is stored for the field then default value will be added
+
+unique:- It don't allow duplicate values in the field.
+
+index:-A field which is specified as index will be maintained with its data seperately which is used for searching the table with respect to the field.
+
+fulltext index:-For making text or medium text or long text to be indexed we use this.
+
+current_timestamp:- stores the curent timestamp in the field at the time of insertion.One single field for a table can be applied for this constraint.
+		  
+pimary key:- Every table should have one primary key. Primary key field will be unique and index by default.	
+
+auto_increment:- It can be applied to primary key only. Every new insertion will be  automatically incremented by 1.
+
+
+Creating a new table:-		
+
+syntax:-
+
+mysql>create table <table_name>(<fld_name> <type>(<size>) <additiuonal constraints>, <fld_info>,...<fld_info>);
+
+Ex:- 
+
+mysql>create table contacts(id int(10) primary key auto_increment not null, name varchar(255) not null,email varchar(255) not null, phno varchar(20) not null,address text);
+
+mysql>show tables[from <db_name>];
+prints the list of tables from the specified Database name.
+
+mysql>desc contacts;
+prints the structure of table
+
+syntax:-
+
+mysql>desc <table_name>;
+		(or)
+mysql>desc <db_name>.<table_name>;
+		(or)
+mysql>describe <table_name>;
+		(or)
+mysql>explain <table_name>;
+		
+mysql>show columns from <table_name>;
+
+Altering the tables:-
+
+mysql>alter table <table_name> add <field_name>[after|before <field_name>];
+
+mysql>alter table contacts add birthday date not null;
+
+mysql>alter table <table_name> change <field_name> <field_info>;
+
+mysql>alter table contacts change birthday dob date not null;
+
+mysql>alter table <table_name> drop <field_name>;
+
+mysql>alter table contacts drop dob;
+
+mysql>alter table <table_name> rename to <new_table_name>;
+
+mysql>alter table contacts rename to phonebook;
+
+mysql>truncate table <table_name>;
+Entire data of the table will be erased and primary key field 
+is set to initial value
+
+mysql>drop table <table_name>;
+Deletes the table with its data and structure from the database server
+
+============DATA LEVEL QUERIES===========
+
+mysql>insert into <table_name> values(<value_list>)
+
+mysql>insert into <table_name>[<field_list>] values(<value_list>)
+
+mysql>insert into phonebook values(null,"lamp","lamp@abc.com");
+
+mysql>select * from <table_name>;
+
+mysql>select <field_list> from <table_name>;
+
+mysql>insert into phonebook values(null,"stud1","stud1@abc.com"),
+(null,"stud2","stud2@abc.com");
+
+mysql>update phonebook set point=point+5;
+
+mysql>update <table_name> set <field_name>=<value> [,<field_name>=<value>,...]  where  <condition>;
+
+mysql>update phonebook set points=points+5 where id=2;
+
+H.W:-
+1. create a database portal
+
+2.create table users with id,name,gender,salary and dob.
+
+3.Add 10 users to the table(use 3 different approches).
+
+4.update salaries of all users by adding 10% increase in salary.
+
+5.update all the female salaries with 200%
+
+6. decrease salaries by 500 for whome the salary is>15000
+
+7.delete the user peter.
+
+8.delete the users with salary>10000
+
+9.create a table with name as news and fields as nid,ntitle,
+ndesc(text),npic(image) and nadded(date)
+
+10.product table-->id,name,price,cat_id,brand_id
+===========SELECT QUERIES ========================
+
+mysql>select */<field_list> from <table_name> [where <condition>] 
+[group by <field_name>]  [order by <field_name>[asc*/desc]]  [limit [<start>,] <total_no_of_records>];
+
+* returns all fields in the table
+
+mysql>select * from <table_name>;
+It shows all the records of the table.
+
+mysql>select name,gender,salary from users;
+It shows the specific fields data
+
+mysql>select name,gender,salary from users where gender='f';
+It shows the specific fields data if condition is met
+
+mysql>select name,gender,salary from users where gender='m' and salary<=20000;
+
+mysql>select name,gender,salary from users where salary between 12000 and 25000;
+
+mysql>select name,gender,salary from users where where id in(1,3,5);
+
+mysql>select name,gender,salary from users where id=3;
+
+mysql>select name,gender,salary from users where id not in(1,2,3);
+
+mysql>select name,gender,salary from users where id!=4;
+
+like:- like is used for searching text using where condition
+
+_(underscore) matches any single character
+
+% matches any string value
+
+mysql>select id,name,salary from users where name like "s%";
+
+mysql>select id,name,salary from users where name like "%i";
+
+mysql>select id,name,salary from users where name like "%u%";
+
+mysql>select id,name,salary from users where name like "____";
+
+mysql>select id,name,salary from users where name like "_a";
+
+order by:-
+
+mysql>mysql>select id,name,salary from users where <cond> order by name;
+
+mysql>select id,name,salary from users where id<5 order by salary desc;
+
+grouping (or) group by:-
+
+mysql>select id,name,salary from users where <cond> groupby gender;
+
+limit:-It is used for retrieving limited set of records from the table. It is used for pagenation in the website
+
+[limit [<start>,] <total_no_of_records>]
+
+mysql>select id,name,salary from users limit 5;
+
+mysql>select id,name,salary from users limit 0,5;
+
+mysql>select id,name,salary from users limit 5,5;
+
+=============PHP with MySQL ======================
+
+PHP is distributed along with MySql library which is used for 
+communicating with database server.
+
+Databse communication with PHP program can be identified in various steps.
+	a. Connecting to the DB server
+	b. selecting the DB.
+	c. Executing query with DB server
+	d. Retrieve the records (or)get the status of the query
+	e. close the connection
+
+
